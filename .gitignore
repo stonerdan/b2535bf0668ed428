@@ -1,3 +1,4 @@
 logs/user-agents.log
 certs/
+certs/server.rsacrt
 
