@@ -35,7 +35,7 @@ function ISODateString(d) {
 var tlsOptions = {
 	key: fs.readFileSync('certs/server.rsakey'),
 	cert: fs.readFileSync('certs/server.rsacrt')
-    };
+};
 
 function HandleRequest(req, res) {
     var d = new Date();
@@ -43,13 +43,13 @@ function HandleRequest(req, res) {
     
     if (!uaStrings[userAgent])
         uaStrings[userAgent] = 'tits' + test++;
-        
+
     uaLog.write(ISODateString(d) + ': ' + userAgent + '\n');
     res.writeHead(200, {'Content-type': 'text/plain;charset=utf-8'});
     res.end('Date: ' + d.getTime());
 }
 
 server.createServer(HandleRequest).listen(port);
-               
+
 console.log('Listening for HTTPS/TLS connections on port ' + port);
 
