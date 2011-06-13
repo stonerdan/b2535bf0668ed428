@@ -1,7 +1,6 @@
 var server = require('http');
 var fs     = require('fs');
 var port   = 8000;
-var crypto = require('crypto');
 
 if (require('path').existsSync('logs') == false) {
     fs.mkdirSync('logs', 0755);
@@ -51,22 +50,6 @@ function HandleRequest(req, res) {
 }
 
 server.createServer(HandleRequest).listen(port);
-
-console.log('Creating DH objects');
-
-var dhA = crypto.createDiffieHellman('00b3f006b4175090c6a0a8bffd00fa' +
-                                     '5cc368fd40b3adc89ccad3861b8c5c' +
-                                     '292c7a07cede4e805917567eba5aa4' +
-                                     '932aae453caab946670165d6ea50f6' +
-                                     '7d7e89e9db', 'hex');                                     
-
-console.log('Generating DH keys');
-
-var pubA = dhA.generateKeys('hex');
-var pubB = dhA.generateKeys('hex');
-
-console.log(pubA);
-console.log(pubB);
                
 console.log('Listening for HTTPS/TLS connections on port ' + port);
 
