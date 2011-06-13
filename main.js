@@ -7,7 +7,8 @@ if (require('path').existsSync('logs') == false) {
     fs.mkdirSync('logs', 0755);
 }
 
-var uaLog = fs.createWriteStream('logs/user-agents.log', {flags: 'a', encoding: 'utf8'});
+var uaLog = fs.createWriteStream('logs/user-agents.log',
+                                 {flags: 'a', encoding: 'utf8'});
 
 var name = 'Dejan Čančarević';
 var len = name.length;
