@@ -1,4 +1,4 @@
-var server = require('http');
+var server = require('https');
 var fs     = require('fs');
 var port   = 8000;
 require('./dateutils.js');
@@ -24,7 +24,7 @@ function HandleRequest(req, res) {
     res.end('Date: ' + d);
 }
 
-server.createServer(HandleRequest).listen(port);
+server.createServer(tlsOptions, HandleRequest).listen(port);
 
 console.log('Listening for HTTPS/TLS connections on port ' + port);
 
