@@ -16,12 +16,12 @@ var tlsOptions = {
 };
 
 function HandleRequest(req, res) {
-    var d = new Date();
+    var d = new Date().toISODateString();
     var userAgent = req.headers['user-agent'];
 
-    uaLog.write(d.toISODateString() + ': ' + userAgent + '\n');
+    uaLog.write(d + ': ' + userAgent + '\n');
     res.writeHead(200, {'Content-type': 'text/plain;charset=utf-8'});
-    res.end('Date: ' + d.getTime());
+    res.end('Date: ' + d);
 }
 
 server.createServer(HandleRequest).listen(port);
